@@ -1,0 +1,30 @@
+{
+  "name": "cultivar-bootstrap",
+  "version": "1.0.0",
+  "description": "breeds website layouts",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./spec/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucaswadedavis/cultivar-bootstrap.git"
+  },
+  "devDependencies": {
+   "mocha": "*",
+   "chai": "*"
+  },
+  "keywords": [
+    "bootstrap",
+    "genetic",
+    "algorithm",
+    "evolution",
+    "genetic"
+  ],
+  "author": "Lucas Wade Davis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucaswadedavis/cultivar-bootstrap/issues"
+  },
+  "homepage": "https://github.com/lucaswadedavis/cultivar-bootstrap#readme"
+}
