@@ -25,7 +25,7 @@
     {type:"title", text:"Lucas Wade Davis"}
     ];
   content.images = [
-    {type:"image", text:"me", image:"./images/headshot.png"}
+    {type:"image", text:"me", image:"./images/headshot-128.png"}
     ];
   content.posts = [];
   content.links = [
@@ -62,11 +62,7 @@
   
   template.column = function(x){
     var d = "";
-    d += "<div class='";
-      d += " col-sm-"+x.sm;
-      d += " col-md-"+x.md;
-      d += " col-lg-"+x.lg;
-    d += "'>"+x.content+"</div>";
+    d += "<div class='"+x.classes.join(" ")+"'>"+x.content+"</div>";
     return d;
   };
   
@@ -93,37 +89,53 @@
     
     var lib ={};
     lib["title"] = function(x){
-      html += template.column({sm:3,md:3,lg:3,content:x.text});
+      var classes = [
+          "col-sm-3",
+          "col-md-3",
+          "col-lg-3",
+          ];
+      html += template.column({classes:classes, content:"<h1>"+x.text+"</h1>"});
     };
     lib["image"] = function(x){
       var imgTag = "<img src='"+x.image+"' alt='"+x.text+"' />";
-      html += template.column({sm:3,md:3,lg:3,content:imgTag});
+      var classes = [
+          "col-sm-3",
+          "col-md-3",
+          "col-lg-3",
+          ];
+      html += template.column({classes:classes,content:imgTag});
     };
     lib["link"] = function(x){
       var d = "<a href='"+x.url+"'>";
         d += "<img src='"+x.image+"' alt='"+x.text+"' />";
       d += "</a>";
-      html += template.column({sm:3,md:3,lg:3,content:d});
+      var classes = [
+          "col-sm-3",
+          "col-md-3",
+          "col-lg-3",
+          ];
+      html += template.column({classes:classes, content:d});
     };
     lib["css-color"] = function(x){
       reziCSS.body = {"background-color":x.color};
     };
     
     html += "<div class='container'>";
-    for (var i=0;i<x.length;i++){ 
+    
+    for (var i=0, counter = 0;i<x.length;i++){ 
       if (!lib[x[i].type]){continue;}
-      html += (i%4===0) ? "<div class='row'>" : "\n" ;
+      if (counter%4===0){html += "<div class='row'>";}
+      counter++;
       lib[x[i].type](x[i]); 
-      //console.log(x[i]);
-      console.log(html);
-      html += (i%4===0) ? "</div>" : "\n" ;
+      if (counter%4===0){html += "</div>";}
     }
     html += "</div>";
+    
+    
     return {html: html, css: reziCSS};
   };
   
   var rb = ribosome(app.bloodlines[0]);
-  console.log(rb);
   rezi(rb.css);
   $(document).ready(function(){
     $("body").append(rb.html);
