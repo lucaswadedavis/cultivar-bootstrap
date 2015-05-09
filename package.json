@@ -11,8 +11,8 @@
     "url": "git+https://github.com/lucaswadedavis/cultivar-bootstrap.git"
   },
   "devDependencies": {
-   "mocha": "*",
-   "chai": "*"
+    "mocha": "*",
+    "chai": "*"
   },
   "keywords": [
     "bootstrap",
@@ -26,5 +26,12 @@
   "bugs": {
     "url": "https://github.com/lucaswadedavis/cultivar-bootstrap/issues"
   },
-  "homepage": "https://github.com/lucaswadedavis/cultivar-bootstrap#readme"
+  "homepage": "https://github.com/lucaswadedavis/cultivar-bootstrap#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.4",
+    "darwa": "^1.1.0",
+    "jquery": "^2.1.4",
+    "rezi": "^1.0.0",
+    "underscore": "^1.8.3"
+  }
 }
